@@ -39,6 +39,10 @@ pip install -e .
 
 ## Quick start
 
+Input data are plain CSV files with a `sequence` column; training CSVs
+additionally require an `activity` (regression) or `label`
+(classification) column.
+
 ### 1. Predict activity for a sequence
 
 ```bash
