@@ -1,0 +1,62 @@
+# Promoter-specific configuration overrides
+biopart: promoter
+
+# Activity transform formula
+activity_transform:
+  slope: 5.0415
+  intercept: -0.8943
+  formula: "true_activity = 5.0415 * pred - 0.8943"
+
+# Default predictor for quick-predict mode
+default_predictor: "./predictor_checkpoints/language_model/promoter_LoRA_finetune"
+
+# Predictor configuration
+predictors:
+  # Default predictor
+  dl_model:
+    predictor_dir: "./predictor_checkpoints/language_model/promoter_LoRA_finetune"
+    model_type: "evo"
+    encoding: "onehot"
+    enabled: true
+    weight: 0.5
+
+  # Evo model
+  evo_model:
+    checkpoint_path: "./predictor_checkpoints/language_model/promoter_LoRA_finetune/best_model.pth"
+    model_type: "evo"
+    enabled: true
+    weight: 0.5
+    model_name: "evo-1.5-8k-base"
+    lora_rank: 16
+    single_model: true
+
+  # CNN–Attention–BiLSTM backup model
+  conv_model:
+    predictor_dir: "./predictor_checkpoints/supervised_model/promoter_CNN_Attn_BiLSTM"
+    model_type: "conv"
+    encoding: "onehot"
+    enabled: false
+    weight: 0.5
+
+# Diffusion model configuration (direct one-hot DDPM; trained by scripts/train_ddpm.py)
+diffusion:
+  checkpoint_path: "./diffusion_checkpoints/promoter_direct/checkpoints/best.pth"
+  checkpoint_path_latest: "./diffusion_checkpoints/promoter_direct/checkpoints/latest.pth"
+
+sequence:
+  seq_len: 40
+  encoding: "onehot"
+
+model:
+  architecture: "conv"
+  conv_width_motif: 5
+  n_heads: 16
+  conv_hidden: 128
+  motif_conv_hidden: 256
+  dropout_rate: 0.2
+
+training:
+  batch_size: 64
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  patience: 100

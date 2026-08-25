@@ -1,0 +1,39 @@
+# DeepBioParts Default Configuration
+# ====================================
+# Override these defaults in biopart-specific configs or via CLI.
+
+biopart: null  # Must be set: promoter | rbs | terminator
+
+data:
+  train_path: null
+  seq_col: "Sequence"
+  label_col: "Activity"
+  test_size: 0.2
+  n_splits: 5
+  random_state: 42
+  val_size: 0.1
+  num_workers: 4
+  use_cluster_split: false
+  similarity_threshold: 0.8
+  kmer_size: 3
+
+model:
+  d_model: 128
+  dff: 512
+  num_layers: 2
+
+training:
+  epochs: 200
+  optimizer: "adam"
+  clip_grad_norm: 1.0
+  num_classes: 2
+  l1_weight: 0.1
+  log_steps: 10
+  save_steps: 20
+  ensemble_method: "mean"
+  task_type: "regression"
+
+output:
+  checkpoint_dir: "./checkpoints/"
+  predictions_dir: "./predictions/"
+  log_dir: "./logs/"

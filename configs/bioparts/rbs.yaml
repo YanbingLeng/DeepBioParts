@@ -1,0 +1,55 @@
+# RBS-specific configuration overrides
+biopart: rbs
+
+# Activity transform formula
+activity_transform:
+  slope: 1.3366
+  intercept: -0.2996
+  formula: "true_activity = 1.3366 * pred - 0.2996"
+
+# Default predictor for quick-predict mode
+default_predictor: "./predictor_checkpoints/supervised_model/rbs_CNN_Attn_BiLSTM"
+
+# Predictor configuration
+predictors:
+  # CNN–Attention–BiLSTM model
+  dl_model:
+    predictor_dir: "./predictor_checkpoints/supervised_model/rbs_CNN_Attn_BiLSTM"
+    model_type: "conv"
+    encoding: "onehot"
+    enabled: true
+    weight: 0.5  # Ensemble weight
+
+  # Evo model
+  evo_model:
+    predictor_dir: "./predictor_checkpoints/language_model/rbs_LoRA_finetune"
+    model_type: "evo"
+    enabled: true
+    weight: 0.5  # Ensemble weight
+    # Evo-specific parameters
+    model_name: "evo-1.5-8k-base"
+    lora_rank: 16
+    single_model: false  # Use cross-validation models
+
+# Diffusion model configuration (direct one-hot DDPM; trained by scripts/train_ddpm.py)
+diffusion:
+  checkpoint_path: "./diffusion_checkpoints/rbs_direct/checkpoints/best.pth"
+  checkpoint_path_latest: "./diffusion_checkpoints/rbs_direct/checkpoints/latest.pth"
+
+sequence:
+  seq_len: 15
+  encoding: "single"
+
+model:
+  architecture: "conv"
+  conv_width_motif: 5
+  n_heads: 8
+  conv_hidden: 128
+  motif_conv_hidden: 256
+  dropout_rate: 0.15
+
+training:
+  batch_size: 64
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  patience: 100
