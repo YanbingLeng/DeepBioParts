@@ -8,9 +8,6 @@ the design object. It combines DDPM sequence generation, activity prediction
 homology constraint ($L_{\max} \le 10$ bp) in an iterative
 generate–select–predict–update workflow.
 
-Model scope, evaluation, limitations and responsible-use guidance are provided
-in the [DeepBioParts Model Card](MODEL_CARD.md).
-
 ## 1. System requirements and installation
 
 The supported reference setup is Linux x86-64, Python 3.10, and an NVIDIA GPU
