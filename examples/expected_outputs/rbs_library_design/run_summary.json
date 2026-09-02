@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "library_size": 100,
+  "retired_sequences": 200,
+  "coverage_loss": 8.464564581831683e-06,
+  "coverage_radius": 0.005749554116211392,
+  "cumulative_predictions": 21306,
+  "design_config": {
+    "sequence_length": 15,
+    "target_library_size": 100,
+    "lmax": 10,
+    "generation_batch": 1000,
+    "max_rounds": 20,
+    "max_swaps_per_round": 10,
+    "min_coverage_gain": 0.0,
+    "max_stagnant_rounds": 3
+  },
+  "generator_dir": "diffusion_checkpoints/rbs_direct",
+  "predictor_dir": "predictor_checkpoints/supervised_model/rbs_CNN_Attn_BiLSTM",
+  "nrpcalc_source": "src/nrpcalc",
+  "device": "cuda:0",
+  "seed": 42
+}

@@ -1,48 +1,16 @@
-# ============================================================
-# DeepBioParts .gitignore
-# ============================================================
-
-# --- Model checkpoints and weights (very large) ---
+# Model weights are downloaded separately.
 predictor_checkpoints/
-latent_diffusion_checkpoints/
 diffusion_checkpoints/
-fair_checkpoints/
-gan_checkpoints/
 src/evo/models/evo-1.5-8k-base/
 
-# --- Training data (large CSV) ---
-dataset/
-
-# --- Training logs and outputs ---
-logs/
-*.log
-
-# --- Optuna database ---
-optuna.db
-
-# --- Reference PDFs (copyrighted) ---
-DeepBioParts_Reference/
-
-# --- Archived / unused files ---
-_unused_archive/
-
-# --- Generated figures (reproducible from scripts) ---
-paper_figure/
-
-# --- Analysis output text files ---
-kmer_r2_analysis_output.txt
-rbs_deep_analysis_output.txt
-rbs_residual_output.txt
-train_all.log
-
-# --- Results: only the final part library is tracked; all other results are generated ---
+# Locally generated outputs.
+examples/demo_outputs/
 results/*
 !results/biopart_database/
-
-# --- NRP Calculator working directory (design pipeline) ---
 .tmp/
+*.log
 
-# --- Python bytecode and caches ---
+# Python build products and caches.
 __pycache__/
 .pytest_cache/
 *.py[cod]
@@ -54,34 +22,19 @@ dist/
 build/
 eggs/
 
-# --- Jupyter Notebook ---
+# Notebook and editor files.
 .ipynb_checkpoints/
-
-# --- IDE ---
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# --- OS ---
+# Operating-system files.
 .DS_Store
 Thumbs.db
 
-# --- Environment ---
+# Local environments and secrets.
 .env
 env/
 venv/
-src/nrpcalc/nrpcalc_env/
-
-# --- Plan directory (working notes, not code) ---
-plan/
-
-# --- Claude Code session files & internal guide ---
-.claude/
-CLAUDE.md
-
-# --- Unpublished manuscript / supplementary drafts (not for public release) ---
-DeepBioParts_manuscript*
-DeepBioParts_Manuscript*
-DeepBioParts_Supplementary*
