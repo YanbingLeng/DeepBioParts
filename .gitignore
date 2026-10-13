@@ -1,0 +1,40 @@
+# Model weights are downloaded separately.
+predictor_checkpoints/
+diffusion_checkpoints/
+src/evo/models/evo-1.5-8k-base/
+
+# Locally generated outputs.
+examples/demo_outputs/
+results/*
+!results/biopart_database/
+.tmp/
+*.log
+
+# Python build products and caches.
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+eggs/
+
+# Notebook and editor files.
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating-system files.
+.DS_Store
+Thumbs.db
+
+# Local environments and secrets.
+.env
+env/
+venv/

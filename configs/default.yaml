@@ -1,0 +1,12 @@
+# DeepBioParts defaults for pretrained model usage.
+# Override these defaults in biopart-specific configs or via CLI.
+
+biopart: null  # Must be set: promoter | rbs | terminator
+
+model:
+  d_model: 128
+  dff: 512
+  num_layers: 2
+
+output:
+  predictions_dir: "./predictions/"
